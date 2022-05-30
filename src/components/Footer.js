@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { FontAwesome } from '@expo/vector-icons';
 import colors from '../helper/colors';
@@ -14,19 +14,19 @@ export default function Footer(props) {
             </View>
             <View style={styles.tabContainer}>
                 <TouchableOpacity style={styles.buttonContainer} onPress={()=> props.onFilterBy(ALL)}>
-                    <Text>All</Text>
+                    <Text style={{fontWeight: props.filterBy == ALL ? 'bold' : '400'}}>All</Text>
                 </TouchableOpacity>
 
                 <View style={{width:1, backgroundColor:'#000'}} />
 
                 <TouchableOpacity style={styles.buttonContainer} onPress={()=> props.onFilterBy(COMPLETED)}>
-                    <Text>Completed</Text>
+                    <Text style={{fontWeight: props.filterBy == COMPLETED ? 'bold' : '400'}}>Completed</Text>
                 </TouchableOpacity>
 
                 <View style={{width:1, backgroundColor:'#000'}} />
                 
                 <TouchableOpacity style={styles.buttonContainer} onPress={()=> props.onFilterBy(REMAINING)}>
-                    <Text>Remaining</Text>
+                    <Text style={{fontWeight: props.filterBy == REMAINING ? 'bold' : '400'}}>Remaining</Text>
                 </TouchableOpacity>
 
             </View>
@@ -36,8 +36,8 @@ export default function Footer(props) {
 
 const styles = StyleSheet.create({
   container: {
-    height:60,
-    paddingBottom:20,
+    height: Platform.OS == "ios" ? 60 : 48,
+    paddingBottom: Platform.OS == "ios" ? 20 : 0,
     paddingHorizontal:16,
     flexDirection:'row',
     backgroundColor: colors.primary,

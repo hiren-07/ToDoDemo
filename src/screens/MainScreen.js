@@ -70,6 +70,7 @@ export default function MainScreen() {
         </View>
         <Footer 
             isAdd={addItem} 
+            filterBy={filterBy}
             countText={`${searchText.length == 0 ? list.length : newList.length} Items`}
             onAdd={()=> {
                 setSearchText('')
